@@ -7,6 +7,7 @@ namespace UsersService.Entity
         {
 
         }
+        public string ID {get;set;}
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public UserType TypeOfUser { get; set; } 

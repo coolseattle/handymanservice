@@ -17,6 +17,7 @@ namespace UsersService.Entity
 
             var user = new User()
             {
+                ID =  "Nila0001",
                 FirstName = "Scottish",
                 LastName = "Plubmcer",
                 BillingAddress = new Address()
@@ -43,6 +44,7 @@ namespace UsersService.Entity
 
              user = new User()
             {
+                 ID =  "Nila0002",
                 FirstName = "Robert",
                 LastName = "Clave",
                 BillingAddress = new Address()

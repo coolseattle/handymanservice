@@ -20,12 +20,22 @@ namespace UsersService
         {
             Configuration = configuration;
         }
-
+        readonly string AllowSpecificOrigins = "_AllowSpecificOrigins";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+                services.AddCors(options =>
+                {
+                    options.AddPolicy(AllowSpecificOrigins,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                  });
+                });
             services.AddControllers();
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -54,7 +64,7 @@ namespace UsersService
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseCors(AllowSpecificOrigins);
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
